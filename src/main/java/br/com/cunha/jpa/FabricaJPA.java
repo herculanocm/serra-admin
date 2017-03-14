@@ -13,7 +13,7 @@ public class FabricaJPA {
 	@Produces
 	@ApplicationScoped
 	public EntityManagerFactory criaEntityManagerFactory(){
-		return Persistence.createEntityManagerFactory("default");
+		return Persistence.createEntityManagerFactory("serraAdmin");
 	}
 	
 	@Produces

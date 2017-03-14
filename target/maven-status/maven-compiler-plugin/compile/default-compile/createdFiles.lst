@@ -3,16 +3,12 @@ br\com\cunha\dao\FuncionarioDAO.class
 br\com\caelum\vraptor\controller\IndexController.class
 br\com\cunha\modelo\Teste.class
 br\com\cunha\modelo\Fone.class
-br\com\cunha\interfaces\PessoaDAOI.class
 br\com\cunha\modelo\Pessoa.class
 br\com\cunha\modelo\HistoricoSalariosFuncionario.class
 br\com\cunha\interfaces\FuncionarioDAOI.class
 br\com\cunha\interfaces\RepoFuncionarioI.class
-br\com\cunha\interfaces\RepoPessoaI.class
 br\com\cunha\controller\FuncionariosController.class
-br\com\cunha\repositorios\RepoPessoa.class
 br\com\cunha\modelo\Funcionario.class
-br\com\cunha\controller\PessoaController.class
 br\com\cunha\modelo\FuncaoFuncionario.class
 br\com\cunha\repositorios\RepoFuncionario.class
 br\com\cunha\modelo\Endereco.class

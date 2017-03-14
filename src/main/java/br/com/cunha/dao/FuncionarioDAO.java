@@ -12,6 +12,14 @@ public class FuncionarioDAO implements FuncionarioDAOI {
 	
 	private final EntityManager manager;
 	
+	/**
+	 * @deprecated CDI eyes only
+	 */
+	protected FuncionarioDAO() {
+		this(null);
+	}
+	
+	
 	@Inject
 	public FuncionarioDAO(EntityManager manager){
 		this.manager = manager;

@@ -12,6 +12,10 @@ public class RepoFuncionario implements RepoFuncionarioI{
 	
 	private final FuncionarioDAOI funcionarioDAOI;
 	
+	protected RepoFuncionario() {
+		this(null);
+	}
+	
 	@Inject
 	public RepoFuncionario(FuncionarioDAOI funcionarioDAOI){
 		this.funcionarioDAOI= funcionarioDAOI;
