@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="D:\4_DEV\JAVA\serra-admin\target" file="D:\4_DEV\JAVA\serra-admin/pom-dist.xml"/>
+  <replace token="VRAPTOR_VERSION_HERE" file="D:\4_DEV\JAVA\serra-admin\target/pom-dist.xml" value="4.0.0.Final"/>
+</target>
+</project>
