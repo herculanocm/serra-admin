@@ -1,34 +1,30 @@
 package br.com.cunha.modelo;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.joda.time.LocalDate;
 
-import br.com.cunha.Endereco;
-import br.com.cunha.Fone;
-import br.com.cunha.Pessoa;
-
-
+@Entity 
+@PrimaryKeyJoinColumn(name="PESSOA_ID")
 public class Funcionario extends Pessoa{
 	
 	private LocalDate dtAdmissao;
 	private LocalDate dtDemisao;
-	private FuncaoFuncionario funcaoFuncionario;
+	//private FuncaoFuncionario funcaoFuncionario;
 	private boolean flgAtivo;
 	private String matricula;
 	
 	public Funcionario(){
-		
 	};
 	
-	public Funcionario(LocalDate dtAdmissao, LocalDate dtDemisao, FuncaoFuncionario funcaoFuncionario, boolean flgAtivo,
+	public Funcionario(LocalDate dtAdmissao, LocalDate dtDemisao,  boolean flgAtivo,
 			String matricula) {
 		super();
 		this.dtAdmissao = dtAdmissao;
 		this.dtDemisao = dtDemisao;
-		this.funcaoFuncionario = funcaoFuncionario;
+		
 		this.flgAtivo = flgAtivo;
 		this.matricula = matricula;
 	}
@@ -49,13 +45,7 @@ public class Funcionario extends Pessoa{
 		this.dtDemisao = dtDemisao;
 	}
 
-	public FuncaoFuncionario getFuncaoFuncionario() {
-		return funcaoFuncionario;
-	}
-
-	public void setFuncaoFuncionario(FuncaoFuncionario funcaoFuncionario) {
-		this.funcaoFuncionario = funcaoFuncionario;
-	}
+	
 
 	public boolean isFlgAtivo() {
 		return flgAtivo;
@@ -75,8 +65,7 @@ public class Funcionario extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Funcionario [dtAdmissao=" + dtAdmissao + ", dtDemisao=" + dtDemisao + ", funcaoFuncionario="
-				+ funcaoFuncionario + ", flgAtivo=" + flgAtivo + ", matricula=" + matricula + "]";
+		return "Funcionario [dtAdmissao=" + dtAdmissao + ", dtDemisao=" + dtDemisao +  ", flgAtivo=" + flgAtivo + ", matricula=" + matricula + "]";
 	}
 	
 	
