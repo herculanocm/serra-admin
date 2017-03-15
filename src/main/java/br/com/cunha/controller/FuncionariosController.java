@@ -1,13 +1,15 @@
 package br.com.cunha.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
-
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.caelum.vraptor.Consumes;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -26,7 +28,7 @@ public class FuncionariosController {
 	private static final Logger logger = LoggerFactory.getLogger(FuncionariosController.class);
 	
 	private RepoFuncionarioI repoFuncionarioI;
-	private Validator validation;
+	private Validator validator;
 	private Result result;
 
 	
@@ -37,16 +39,13 @@ public class FuncionariosController {
 	
 	
 	@Inject
-	public FuncionariosController(RepoFuncionarioI repoFuncionarioI, Result result, Validator validation){
+	public FuncionariosController(RepoFuncionarioI repoFuncionarioI, Result result, Validator validator){
 		this.repoFuncionarioI=repoFuncionarioI;
 		this.result = result;
-		this.validation=validation;
+		this.validator=validator;
 	}
 	
-	@Path("/funcionarios/index")
-	public void index() {
-		result.include("variable", "VRaptor!");
-	}
+	
 	
 	
 	@Get @Path("/funcionarios")
@@ -62,16 +61,16 @@ public class FuncionariosController {
 		result.use(Results.json()).from(listaFuncionario).serialize();
 	}
 	
-	@Post @Path("/funcionario")
-	public void salva(Funcionario funcionario){
+	@Consumes("application/json")
+	@Post 
+	@Path("/funcionario")
+	public void salva(@Valid Funcionario funcionario){
 		logger.info("Sanvando novo Funcionario - metodo post, dados toString: "+funcionario.toString());
-		validation.validate(funcionario);
 		
-		if(validation.hasErrors()){
-			logger.error("Funcionario com erros");
-		}else{
-			logger.info("Funcionario sem erros");
-		}
+		
+	
+		
+	
 		
 	}
 	

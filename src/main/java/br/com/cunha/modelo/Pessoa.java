@@ -27,6 +27,7 @@ public class Pessoa {
 	private String fantasia;
 	
 	private Long cgc;
+	private Long ierg;
 	private LocalDate dtNascimento;
 	private LocalDate dtInclusao;
 	private String usuarioInclusao;
