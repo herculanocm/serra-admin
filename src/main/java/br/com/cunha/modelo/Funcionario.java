@@ -4,6 +4,7 @@ package br.com.cunha.modelo;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.joda.time.LocalDate;
 

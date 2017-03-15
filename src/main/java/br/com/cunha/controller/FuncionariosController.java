@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +13,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.cunha.interfaces.RepoFuncionarioI;
 import br.com.cunha.modelo.Funcionario;
@@ -24,6 +26,7 @@ public class FuncionariosController {
 	private static final Logger logger = LoggerFactory.getLogger(FuncionariosController.class);
 	
 	private RepoFuncionarioI repoFuncionarioI;
+	private Validator validation;
 	private Result result;
 
 	
@@ -34,9 +37,15 @@ public class FuncionariosController {
 	
 	
 	@Inject
-	public FuncionariosController(RepoFuncionarioI repoFuncionarioI, Result result){
+	public FuncionariosController(RepoFuncionarioI repoFuncionarioI, Result result, Validator validation){
 		this.repoFuncionarioI=repoFuncionarioI;
 		this.result = result;
+		this.validation=validation;
+	}
+	
+	@Path("/funcionarios/index")
+	public void index() {
+		result.include("variable", "VRaptor!");
 	}
 	
 	
@@ -55,6 +64,14 @@ public class FuncionariosController {
 	
 	@Post @Path("/funcionario")
 	public void salva(Funcionario funcionario){
+		logger.info("Sanvando novo Funcionario - metodo post, dados toString: "+funcionario.toString());
+		validation.validate(funcionario);
+		
+		if(validation.hasErrors()){
+			logger.error("Funcionario com erros");
+		}else{
+			logger.info("Funcionario sem erros");
+		}
 		
 	}
 	
