@@ -58,6 +58,7 @@ public class Funcionario extends Pessoa{
 		this.flgAtivo = flgAtivo;
 	}
 
+	@NotNull(message="O codigo da matricula não pode estar vazio")
 	public String getMatricula() {
 		return matricula;
 	}
@@ -68,7 +69,7 @@ public class Funcionario extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Funcionario [dtAdmissao=" + dtAdmissao + ", dtDemisao=" + dtDemisao +  ", flgAtivo=" + flgAtivo + ", matricula=" + matricula + "]";
+		return ""+super.toString()+ "Funcionario [dtAdmissao=" + dtAdmissao + ", dtDemisao=" + dtDemisao +  ", flgAtivo=" + flgAtivo + ", matricula=" + matricula + "]";
 	}
 	
 	

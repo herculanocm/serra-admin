@@ -11,6 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 import org.joda.time.LocalDate;
@@ -24,10 +26,9 @@ public class Pessoa {
 	
 	private Long id;
 	private String nome;
-	private String fantasia;
+
 	
 	private Long cgc;
-	private Long ierg;
 	private LocalDate dtNascimento;
 	private LocalDate dtInclusao;
 	private String usuarioInclusao;
@@ -42,12 +43,12 @@ public class Pessoa {
 	};
 	
 
-	public Pessoa(Long id, String nome, String fantasia, Long cgc, LocalDate dtNascimento,
+	public Pessoa(Long id, String nome, Long cgc, LocalDate dtNascimento,
 			LocalDate dtInclusao, String usuarioInclusao, Set<Endereco> enderecos, Set<Fone> fone) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.fantasia = fantasia;
+		
 		this.cgc = cgc;
 		this.dtNascimento = dtNascimento;
 		this.dtInclusao = dtInclusao;
@@ -69,7 +70,7 @@ public class Pessoa {
 		this.id = id;
 	}
 	
-	
+	@NotNull(message="O nome da pessoa não pode estar vazio")
 	public String getNome() {
 		return nome;
 	}
@@ -78,13 +79,7 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getFantasia() {
-		return fantasia;
-	}
-
-	public void setFantasia(String fantasia) {
-		this.fantasia = fantasia;
-	}
+	
 	
 	@Column(name = "PESSOA_CGC", unique = true, nullable = false)
 	public Long getCgc() {
@@ -95,6 +90,7 @@ public class Pessoa {
 		this.cgc = cgc;
 	}
 
+	//@NotNull(message="A data de nascimento da pessoa não pode estar vazio")
 	public LocalDate getDtNascimento() {
 		return dtNascimento;
 	}
@@ -103,6 +99,7 @@ public class Pessoa {
 		this.dtNascimento = dtNascimento;
 	}
 
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa") 
 	public Set<Endereco> getEnderecos() {
 		return enderecos;
@@ -149,7 +146,7 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", fantasia=" + fantasia + ", cgc=" + cgc + ", dtNascimento="
+		return "Pessoa [id=" + id + ", nome=" + nome  + ", cgc=" + cgc + ", dtNascimento="
 				+ dtNascimento + ", dtInclusao=" + dtInclusao + ", usuarioInclusao=" + usuarioInclusao + ", enderecos="
 				+ enderecos + ", fone=" + fone + "]";
 	}

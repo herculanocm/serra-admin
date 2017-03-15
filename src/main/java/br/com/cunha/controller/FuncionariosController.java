@@ -29,6 +29,7 @@ public class FuncionariosController {
 	
 	private RepoFuncionarioI repoFuncionarioI;
 	private Validator validator;
+
 	private Result result;
 
 	
@@ -64,13 +65,23 @@ public class FuncionariosController {
 	@Consumes("application/json")
 	@Post 
 	@Path("/funcionario")
-	public void salva(@Valid Funcionario funcionario){
+	public void salva(Funcionario funcionario){
 		logger.info("Sanvando novo Funcionario - metodo post, dados toString: "+funcionario.toString());
-		
-		
 	
+		validator.validate(funcionario);
+		logger.info("hasErrors : "+validator.hasErrors());
+		//logger.error("Erros "+validator.getErrors().iterator().next().getMessage());
+		if(validator.hasErrors()){
+			result.use(Results.json()).from("Erros : "+validator.getErrors().iterator().next().getMessage()).serialize();
+			
+			
+		}else{
+			result.use(Results.json()).from("tudo certo").serialize();
+			
+			
+		}
 		
-	
+		
 		
 	}
 	
