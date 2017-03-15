@@ -3,10 +3,12 @@ package br.com.cunha.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import org.joda.time.LocalDate;
 
-@Entity 
+@Entity(name="funcionario")
+@Table(name="funcionario")
 @PrimaryKeyJoinColumn(name="PESSOA_ID")
 public class Funcionario extends Pessoa{
 	

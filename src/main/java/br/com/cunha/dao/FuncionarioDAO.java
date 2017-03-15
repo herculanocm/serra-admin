@@ -29,14 +29,16 @@ public class FuncionarioDAO implements FuncionarioDAOI {
 
 	@Override
 	public void addFuncionario(Funcionario funcionario) {
-		// TODO Auto-generated method stub
-
+		if(funcionario.getId() == null){
+			this.manager.persist(funcionario);
+		}else{
+		this.manager.merge(funcionario);	
+		}
 	}
 
 	@Override
 	public List<Funcionario> allFuncionarios() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.manager.createQuery("select f from funcionario f", Funcionario.class).getResultList();
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.cunha.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -40,13 +42,15 @@ public class FuncionariosController {
 	
 	@Get @Path("/funcionarios")
 	public void lista(){
-		logger.info("Testando o comportamento do LOG.");
+		logger.info("Listando Funcionarios - metodo get");
+		/*
 		Funcionario f = new Funcionario();
 		f.setId(new Long(1));
 		f.setNome("herculano");
 		f.setMatricula("448383");
-		
-		result.use(Results.json()).from(f).serialize();
+		*/
+		List<Funcionario> listaFuncionario= repoFuncionarioI.todosFuncionarios();
+		result.use(Results.json()).from(listaFuncionario).serialize();
 	}
 	
 	@Post @Path("/funcionario")

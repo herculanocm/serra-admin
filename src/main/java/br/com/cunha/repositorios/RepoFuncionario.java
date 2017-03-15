@@ -23,14 +23,12 @@ public class RepoFuncionario implements RepoFuncionarioI{
 
 	@Override
 	public void salvaFuncionario(Funcionario funcionario) {
-		// TODO Auto-generated method stub
-		
+		funcionarioDAOI.addFuncionario(funcionario);
 	}
 
 	@Override
 	public List<Funcionario> todosFuncionarios() {
-		// TODO Auto-generated method stub
-		return null;
+		return funcionarioDAOI.allFuncionarios();
 	}
 
 }
